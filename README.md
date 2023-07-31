@@ -1,8 +1,10 @@
 # hbase client 运维工具
 ## 1. 背景
-考虑到运维hbase集群时会有需要查看hbase表数据，
-hbase shell 查询出来的value没有tostring, 经常乱码, 
-merge 小region时经常需要 频繁查看region大小执行merge命令，效率比较低，特此做此工具
+考虑到运维hbase集群时会有需要
+1. 查看hbase表数据，hbase shell 查询出来的value没有tostring, 经常乱码, 
+2. merge 小region时经常需要 频繁查看region大小执行merge命令，效率比较低，
+3. 以及ats-hbase 的数据清理，TTL设置等
+做此工具提升运维效率
 ## 2. 用法
 ```
 支持的操作有get, scan， merge
