@@ -60,7 +60,7 @@ dt=`date +"%Y-%m-%d %H:%M:%S"`
 echo -e "$dt $@"
 }
 show_usage="args:
--a --action=[list/flush/put/get/scan/merge/alter/major_compact/truncate/truncate_preserve],
+-a --action=[list/flush/put/get/scan/Tmerge/merge/alter/major_compact/truncate/truncate_preserve],
 -n --namespace=]
 -t --tablename=]
 -s --startrow=row], get action must have startrow, scan action have default value __allRows__
@@ -173,6 +173,7 @@ log "[INFO] action:$action,namespace:$namespace,tablename:$tablename"
 log "[INFO] startrow:$startrow,endrow:$endrow,columnfamily:$columnfamily,column:$column,limit:$limit,outfile:$outfile"
 log "[INFO] lowsizeperregion:$lowsizeperregion,upperregionsize:$upperregionsize,maxregiongroupsize:$maxregiongroupsize"
 
+#鉴权认证
 kinit -kt ~/hdtest.keytab hdtest
 
 $JAVA_HOME/bin/java -cp $HADOOP_CLASSPATH:$libpath -Djava.util.logging.config.file=./log4j2.xml com.mytools.hbaseclient.HBaseShellClient $action $namespace $tablename $startrow $endrow $columnfamily $column $limit $outfile $lowsizeperregion $upperregionsize $maxregiongroupsize
